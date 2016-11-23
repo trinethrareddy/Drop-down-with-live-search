@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body>
+
+  <div ng-app="myApp" ng-controller="myCtrl">
+    <h3> Here is Dropdown with live search </h3>
+    <live-search-dropdown drop-option-list=dropOptionList filter-by="data"></live-search-dropdown>
+  </div>
+
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+      $scope.dropValue = '';
+      $scope.dropOptionList = [{
+        "data": "one",
+        "value": "test1"
+      }, {
+        "data": "two",
+        "value": "value2"
+      }, {
+        "data": "three",
+        "value": "value3"
+      }, {
+        "data": "four",
+        "value": "value4"
+      }, {
+        "data": "five",
+        "value": "value5"
+      }, {
+        "data": "six",
+        "value": "value6"
+      }];
+      $scope.firstName = "John";
+      $scope.lastName = "Doe";
+    });
+    app.directive('liveSearchDropdown', function() {
+      return {
+        templateUrl: 'liveSearchDirectiveView.html',
+        scope: {
+          dropOptionList: "=",
+          filterBy: "@"
+        },
+        controller: function($scope, $timeout) {
+          console.log("Directive");
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+<div class="dropdown text-center" style="margin: 4% 20%;position:relative;">
+    <input class="form-control dropdown-toggle" type="text" data-toggle="dropdown" readonly="true" ng-model="dropValue" style="width:198px;" placeholder="select one" ng-click="searchText = ''">
+    <span class="caret" style="position:absolute;bottom: 14px;left:181px;"></span>
+    <ul class="dropdown-menu" ng-model="dropValue">
+      <li><input type="text" class="form-control" ng-model="searchText[filterBy]"/></li>
+      <li ng-repeat="x in dropOptionList| filter:searchText"><a ng-click="$parent.dropValue =x.data">{{x.data}}</a></li>      
+    </ul>
+  </div>
